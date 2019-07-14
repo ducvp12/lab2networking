@@ -17,14 +17,14 @@ import java.net.URLEncoder;
 public class POST extends AsyncTask<String, String, String> {
    public static final String duongdan="http://dotplays.com/android/login.php";
     Context context;
-    String usesname,password,name;
+    String usesname,password,name1;
     TextView tvname;
 
-    public POST(Context context, String usesname, String password,String name,TextView tvname) {
+    public POST(Context context, String usesname, String password,String name2,TextView tvname) {
         this.context = context;
         this.usesname = usesname;
-        this.password = password;
-        this.name= name;
+       this.password=password;
+        this.name1= name2;
         this.tvname=tvname;
     }
 
@@ -34,7 +34,7 @@ public class POST extends AsyncTask<String, String, String> {
     protected String doInBackground(String... strings) {
         try {
             URL url=new URL(duongdan);
-            String param="usesname: "+ URLEncoder.encode(usesname)+"&password: " +URLEncoder.encode(password)+"&name: " +URLEncoder.encode(name);
+            String param="usesname: "+ URLEncoder.encode(usesname)+"&password: " +URLEncoder.encode(password)+"&name: " +URLEncoder.encode(name1);
             HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
             urlConnection.setDoOutput(true);
             urlConnection.setRequestMethod("POST");
@@ -51,7 +51,7 @@ public class POST extends AsyncTask<String, String, String> {
             while ((line= bfr.readLine())!= null){
                 sb.append(line);
             }
-            name=sb.toString();
+            name1=sb.toString();
             urlConnection.disconnect();
         } catch (IOException e) {
             e.printStackTrace();
@@ -63,8 +63,8 @@ public class POST extends AsyncTask<String, String, String> {
     protected void onPostExecute(String s) {
 
         super.onPostExecute(s);
-        Toast.makeText(context, name, Toast.LENGTH_SHORT).show();
-        tvname.setText(name);
+        Toast.makeText(context, name1, Toast.LENGTH_SHORT).show();
+        tvname.setText(name1);
     }
 
 

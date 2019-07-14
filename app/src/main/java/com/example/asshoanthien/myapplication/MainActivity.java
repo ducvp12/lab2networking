@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-
+                Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+                intent.putExtra("a",edtname.getText().toString());
+                startActivity(intent);
 
                usesname=edtusesname.getText().toString();
                password=edtpassword.getText().toString();
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        edtusesname = (EditText) findViewById(R.id.edtusesname);
-        edtpassword = (EditText) findViewById(R.id.edtpassword);
+        edtusesname =  findViewById(R.id.edtusesname);
+        edtpassword =  findViewById(R.id.edtpassword);
         button = (Button) findViewById(R.id.button);
         tvname=findViewById(R.id.tvname);
         edtname=findViewById(R.id.edtname);
